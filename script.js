@@ -1,26 +1,59 @@
 // Variables
+var header = $('.jumbotron')
+var date = $('#currentDay')
 var container = $('.container')
-var calendar = $('#calendar')
-var currently = $('#currentDay')
+var timeSlot = $('.time-block')
 
-// Months array
-var months = [
-"Jan",
-"Feb",
-"Mar",
-"Apr",
-"May",
-"Jun",
-"Jul",
-"Aug",
-"Sep",
-"Oct",
-"Nov",
-"Dec"
-]
 
-function formatDates(){
-    moment().format('MMMM Do YYYY, h:mm:ss a')
-    moment().format('dddd')
-}
+$(document).ready(function() {
+    
+    // Pull times from moment.js
+    var current = moment().format('MMMM Do YYYY, h:mm a')
+    let hour24 = moment().format('H');
+
+
+    // sets date text in header
+    var dateHeader = (date)
+    dateHeader.text(current)
+
+    // Pulls data from local stoarage
+    var storedData = JSON.parse(localStorage.getItem('storedData'))
+    if (storedData !== null) {
+        txtArea = storedData
+    }
+
+    for (var hour = 9; hour <= 17; hour++) {
+        // index for array use offset from hour
+        var index = hour - 9;
+    }
+
+    rowColor(timeSlot, hour)
+    // function to update row color
+    function rowColor (row, hour) { 
+
+        if ( hour < hour24) {
+            // $hourRow.css('')
+            row.css("background-color","lightgrey")
+        } 
+            else if ( hour > hour24) {
+            row.css("background-color","lightgreen")
+        } 
+            else {
+            row.css("background-color","lightred")
+            }
+    };
+
+    // saves to local storage
+    // onclick function to listen for user clicks on plan area
+  $(document).on('click','i', function(event) {
+    event.preventDefault();  
+
+    var saveIndex = $(this).attr('save-id');
+    var inputId = '#input-'+ saveIndex;
+    var value = $(inputId).val();
+
+    txtArea[saveIndex] = value;
+    localStorage.setItem('storedData', JSON.stringify(txtArea));
+  });  
+})
 
