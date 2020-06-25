@@ -4,19 +4,23 @@ body {
   line-height: 1;
 }
 
-textarea{
+textarea {
   background: transparent;
   border: none;
   resize: none;
-  color: #000000;
-  border-left: 1px solid black;
+  color: #ffffff;
+  border: 2px solid black;
   padding: 10px;
 }
 
+#currentDay {
+  color: #a70000;
+  font-weight: bold;
+}
 .jumbotron {
   text-align: center;
   background-color: transparent;
-  color: black;
+  color: rgb(41, 92, 0);
   border-radius: 0;
   border-bottom: 10px solid black;
 }
@@ -38,8 +42,10 @@ textarea{
 
 .hour {
   background-color: #ffffff;
-  color: #000000;
-  border-top: 1px dashed #000000;
+  border: 2px solid #000000;
+  padding-top: 1%;
+  font-size: 25px;
+  color: rgba(41, 92, 0);
 }
 
 .past {
@@ -58,10 +64,10 @@ textarea{
 }
 
 .saveBtn {
-  border-left: 1px solid black;
+  border: 2px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: #06AED5;
+  background-color: #a70000;
   color: white;
 }
 
@@ -70,6 +76,6 @@ textarea{
   transition: all .3s ease-in-out;
 }
 
-#calender {
+#calendar {
   background: red;
 }

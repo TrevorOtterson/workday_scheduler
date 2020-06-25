@@ -4,11 +4,10 @@ var date = $('#currentDay')
 var container = $('.container')
 var timeSlot = $('.time-block')
 
-
 $(document).ready(function () {
 
     // Pull times from moment.js
-    var current = moment().format('MMMM Do YYYY, h:mm a')
+    var current = moment().format('MMMM Do YYYY, h:mm A')
     let hour24 = moment().format('H');
 
     // sets date text in header
@@ -35,10 +34,10 @@ $(document).ready(function () {
             row.css("background-color", "lightgrey")
         }
         else if (hour > hour24) {
-            row.css("background-color", "lightgreen")
+            row.css("background-color", "rgb(41, 92, 0)")
         }
         else {
-            row.css("background-color", "lightred")
+            row.css("background-color", "red")
         }
     };
 
