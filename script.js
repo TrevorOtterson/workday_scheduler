@@ -1,3 +1,9 @@
+// Variables//
+var header = $('.jumbotron')
+var date = $('#currentDay')
+var container = $('.container')
+var timeSlot = $('.time-block')
+
 $(document).ready(function () {
 
     setInterval(checkHours, 1000);
