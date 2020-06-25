@@ -5,12 +5,11 @@ var container = $('.container')
 var timeSlot = $('.time-block')
 
 
-$(document).ready(function() {
-    
+$(document).ready(function () {
+
     // Pull times from moment.js
     var current = moment().format('MMMM Do YYYY, h:mm a')
     let hour24 = moment().format('H');
-
 
     // sets date text in header
     var dateHeader = (date)
@@ -29,31 +28,31 @@ $(document).ready(function() {
 
     rowColor(timeSlot, hour)
     // function to update row color
-    function rowColor (row, hour) { 
+    function rowColor(row, hour) {
 
-        if ( hour < hour24) {
+        if (hour < hour24) {
             // $hourRow.css('')
-            row.css("background-color","lightgrey")
-        } 
-            else if ( hour > hour24) {
-            row.css("background-color","lightgreen")
-        } 
-            else {
-            row.css("background-color","lightred")
-            }
+            row.css("background-color", "lightgrey")
+        }
+        else if (hour > hour24) {
+            row.css("background-color", "lightgreen")
+        }
+        else {
+            row.css("background-color", "lightred")
+        }
     };
 
     // saves to local storage
     // onclick function to listen for user clicks on plan area
-  $(document).on('click','i', function(event) {
-    event.preventDefault();  
+    $(document).on('click', 'i', function (event) {
+        event.preventDefault();
 
-    var saveIndex = $(this).attr('save-id');
-    var inputId = '#input-'+ saveIndex;
-    var value = $(inputId).val();
-
-    txtArea[saveIndex] = value;
-    localStorage.setItem('storedData', JSON.stringify(txtArea));
-  });  
+        var saveIndex = $(this).attr('save-id');
+        var inputId = '#input-' + saveIndex;
+        var sValue = $(inputId).val();
+        var txtArea = storedData
+        txtArea[saveIndex] = sValue;
+        localStorage.setItem('storedData', JSON.stringify(txtArea));
+    });
 })
 
