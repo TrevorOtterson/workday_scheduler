@@ -8,7 +8,7 @@ $(document).ready(function () {
 
     // Pull times from moment.js
     var current = moment().format('MMMM Do YYYY, h:mm A')
-    let hour24 = moment().format('H');
+    var hour24 = moment().format('H')
 
     // sets date text in header
     var dateHeader = (date)
@@ -20,20 +20,20 @@ $(document).ready(function () {
         txtArea = storedData
     }
 
-    for (var hour = 9; hour <= 17; hour++) {
+    for (var i = 9; i <= 17; i++) {
         // index for array use offset from hour
-        var index = hour - 9;
+        var hour = i - 9
     }
 
-    rowColor(timeSlot, hour)
+    rowColor(timeSlot, i)
     // function to update row color
-    function rowColor(row, hour) {
+    function rowColor(row, i) {
 
-        if (hour < hour24) {
+        if (i < hour24) {
             // $hourRow.css('')
             row.css("background-color", "lightgrey")
         }
-        else if (hour > hour24) {
+        else if (i > hour24) {
             row.css("background-color", "rgb(41, 92, 0)")
         }
         else {
