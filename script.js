@@ -4,39 +4,36 @@ var date = $('#currentDay')
 var container = $('.container')
 var timeSlot = $('.time-block')
 
-$(document).ready(function () {
-
-    setInterval(checkHours, 1000);
-    function checkHours() {
-        $('.time-block').each(function() {
-         var blockHour = parseInt($(this).data('hour'));
-         var currentHour = moment().hours();
-     
-         if (blockHour < currentHour) {
-          $(this).addClass('past');
-         } else if (blockHour === currentHour) {
-          $(this).removeClass('past');
-          $(this).addClass('present');
-         } else {
-          $(this).removeClass('past');
-          $(this).removeClass('present');
-          $(this).addClass('future');
-         }
-        });
-       }
+$(document).ready(function() {
+//     if (!localStorage.getItem('time-block')){
+//         updateDailyTasks(storedData);
+//     } else {
+//         let object = JSON.parse(localStorage.getItem('time-block'))
+//         updateDailyTasks(object)
+//         }
+//         function updateDailyTasks (storedData){
+//             $(".row").each(function(){
+//                let texting = $(this).children("div");
+//                $(this).children("textarea").text(storedData[texting.text()])
+//             })
+//         }
     // Pull times from moment.js
     var current = moment().format('MMMM Do YYYY, h:mm:ss A')
     var hour24 = moment().format('H');
     // sets date text in header
     var dateHeader = (date)
     dateHeader.text(current)
+
     // Pulls data from local stoarage
     var storedData = JSON.parse(localStorage.getItem('storedData'))
     if (storedData !== null) {
-        txtArea = storedData
+        //txtArea = storedData
+    }
+    else {
+        storedData = {}
     }
     for (var hour = 9; hour <= 17; hour++) {
-        // index for array use offset from hour
+    // index for array use offset from hour
         var index = hour - 9;
     }
     
@@ -69,13 +66,13 @@ $(document).ready(function () {
     
     // saves to local storage
     // onclick function to listen for user clicks on plan area
-    $(document).on('click', 'i', function (event) {
-        event.preventDefault();
-        var saveIndex = $(this).attr('save-id');
-        var inputId = '#input-' + saveIndex;
-        var sValue = $(inputId).val();
-        var txtArea = storedData
-        txtArea[saveIndex] = sValue;
-        localStorage.setItem('storedData', JSON.stringify(txtArea));
-    });
+     $(document).on('click', 'i', function(event) {
+         event.preventDefault();
+         var saveIndex = $(this.parentElement.parentElement).attr('data-hour');
+         var inputValue = $('.text')
+         var sValue = inputValue.val();
+         storedData[saveIndex] = sValue;
+         localStorage.setItem('storedData', JSON.stringify(storedData));
+     });
+
 });
